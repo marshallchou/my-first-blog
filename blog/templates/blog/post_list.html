@@ -1,19 +1,43 @@
+{% load staticfiles %}
 <html>
     <head>
         <title>Django Girls blog</title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        
+        <link href="https://fonts.googleapis.com/css?family=Denk+One" rel="stylesheet">
+        <!-- Latest compiled and minified JavaScript 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        -->
+
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
     </head>
     <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
+        <div class="page-header">
+            <h1><a href="/admin">Django Girls Blog</a></h1>
             <p>published: 14.06.2014, 12:14</p>
+            <a href="https://en.wikipedia.org/wiki/Django" class="external_link" id="link_to_wiki_page">CCCC</a>
         </div>
 
-    {% for post in posts %}
-    	<div>
-        	<h2><a href="">{{ post.title }}</a></h2>
-        	<p>published: {{ post.published_date }}</p>
-        	<p>{{ post.text|linebreaksbr }}</p>
-    	</div>
-   	{% endfor %}
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>published: {{ post.published_date }}</p>
+                            </div>
+                            <h1><a href="">{{ post.title }}</a></h1>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </body>
 </html>
